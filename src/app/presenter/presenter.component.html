@@ -1,0 +1,14 @@
+<div class="container color-dark">
+  <div class="col">
+    <p>Angular 5 Test Task </p>
+  </div>
+</div>
+<div class="container color-light" [@messages]="messages.length">
+  <div class="col">
+    <p class="sm">Messages List</p>
+    <p class="life-container" *ngFor="let message of messages; let i=index">
+      Message: {{ message.message }} <br>
+      Expiration date: {{ message.expiration_date }}
+    </p>
+  </div>
+</div>
