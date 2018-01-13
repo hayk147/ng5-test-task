@@ -8,7 +8,7 @@ export class ConsumerService {
 
   constructor(private httpClient: HttpClient){
   }
-
+  //Get all messages from rest api
   getAllMessages(){
     return this.httpClient.get('http://127.0.0.1:8000/messages');
   }

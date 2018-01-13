@@ -8,6 +8,7 @@ import { ConsumerService } from '../consumer.service';
   styleUrls: ['./presenter.component.scss'],
   animations: [
 
+    //  Animation for messages list
     trigger('messages', [
       transition('* => *', [
 
@@ -41,6 +42,7 @@ export class PresenterComponent implements OnInit {
   constructor(private consumerService: ConsumerService) { }
 
   ngOnInit() {
+    // Get all messages from service
     this.consumerService.getAllMessages()
       .subscribe(
         // Successful responses call the first callback.
@@ -48,6 +50,7 @@ export class PresenterComponent implements OnInit {
           this.messages = response;
           let messagesLength = this.messages.length;
           if(messagesLength > 0) {
+            //call setTimeout with expired time(milliseconds) for each message
             for(let i =0; i < messagesLength; i++){
               let dateExpired = new Date(this.messages[i].expiration_date);
               let dateNow = new Date();
@@ -71,6 +74,7 @@ export class PresenterComponent implements OnInit {
       );
   }
 
+  //Remove message from messages array by id
   removeMessage(id:any) {
     let messagesLength = this.messages.length;
     if(messagesLength > 0) {
